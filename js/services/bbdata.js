@@ -1,5 +1,5 @@
 app.factory('bbdata', ['$http', function($http) { 
-  return $http.get('http://www.bestbuy.com/api/1.0/product/summaries?skus=1107008,1581921&includeInactive=false') 
+  return $http.get('json/bbdata.json') 
             .success(function(data) { 
               return data; 
             }) 
