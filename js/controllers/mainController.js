@@ -1,4 +1,4 @@
-app.controller('MainController', ['$scope', function($scope) {
+app.controller('mainController', ['$scope', function($scope) {
   $scope.apps = [ 
 	  { 
 	    icon: 'img/move.jpg', 
