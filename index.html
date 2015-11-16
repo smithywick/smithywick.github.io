@@ -10,16 +10,35 @@
   <body ng-app="AppMarketApp">
     <div class="header">
       <div class="container">
-        <h1>App Market</h1>
+        <h1>Best Buy Wish List</h1>
       </div>
     </div>
 
     <div class="main" ng-controller="mainController">
       <div class="container">
-         <div class="card" ng-repeat="app in apps">
-          <app-info info="app"></app-info>
-           <install-app></install-app>
-        </div>       
+		<div class="row">
+          <div class="col-sm-5 col-sm-offset-7">
+            <div class="bbdata" ng-repeat="data in bbdata.bbdata">
+              <div class="data row">
+                <!-- datetime -->
+                <div class="sku col-xs-4">
+								{{data.skuId}}
+                </div>
+                <!-- 
+                <div class="weather col-xs-3">
+							<img ng-src={{day.icon}}></ng-src>
+                </div>
+                <div class="col-xs-1"></div>
+                <div class="high col-xs-2">
+							{{day.high}}
+                </div>
+
+                <div class="low col-xs-2">
+							{{day.low}}
+                </div>-->
+              </div>
+            </div>
+          </div>      
       </div>
     </div>
 
