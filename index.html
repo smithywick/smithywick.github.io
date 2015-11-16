@@ -15,32 +15,28 @@
     </div>
 
     <div class="main" ng-controller="mainController">
-      <div class="container">
-		<div class="row">
-          <div class="col-sm-5 col-sm-offset-7">
-            <div class="bbdata" ng-repeat="data in bbdata.bbdata">
-              <div class="data row">
-                <!-- datetime -->
-                <div class="sku col-xs-4">
-								{{data.skuId}}
-                </div>
-                <!-- 
-                <div class="weather col-xs-3">
-							<img ng-src={{day.icon}}></ng-src>
-                </div>
-                <div class="col-xs-1"></div>
-                <div class="high col-xs-2">
-							{{day.high}}
-                </div>
-
-                <div class="low col-xs-2">
-							{{day.low}}
-                </div>-->
-              </div>
-            </div>
-          </div>      
-      </div>
-    </div>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-5 col-sm-offset-7">
+					<div class="bbdata" ng-repeat="data in bbdata.bbdata">
+						<div class="data row">
+							<div class="sku col-xs-4">
+									{{data.skuId}}
+							</div>
+							<!-- 
+							<div class="weather col-xs-3">
+										<img ng-src={{day.icon}}></ng-src>
+							</div>
+							<div class="col-xs-1"></div>
+							<div class="high col-xs-2">
+										{{day.high}}
+							</div>
+						</div>
+					</div>
+				</div>      
+			</div>
+		</div>
+	</div>
 
     <!-- Modules -->
     <script src="js/app.js"></script>
@@ -50,6 +46,9 @@
 
     <!-- Directives -->
     <script src="js/directives/appInfo.js"></script>
+	
+	<!-- Services -->
+	<script src="js/services/bbdata.js"></script>
 
   </body>
 </html>
