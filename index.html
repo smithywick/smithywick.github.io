@@ -20,11 +20,11 @@
 				<div class="">
 					<div class="bbdata" ng-repeat="data in bbdata">
 						<div class="data row">
-							<div class="bb-sku">
-									{{data.itemId}}
-							</div>
 							<div class="bb-pic">
 								<img ng-src={{data.media.listImage.url}}></ng-src>
+							</div>
+							<div class="bb-sku">
+									SKU:{{data.itemId}}
 							</div>
 							<div class="bb-desc">
 								{{data.media.listImage.altText}}
