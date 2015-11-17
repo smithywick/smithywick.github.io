@@ -20,17 +20,15 @@
 				<div class="col-sm-5 col-sm-offset-7">
 					<div class="bbdata" ng-repeat="data in bbdata">
 						<div class="data row">
-							<div class="sku col-xs-4">
+							<div class="bb-sku">
 									{{data.itemId}}
 							</div>
-							<!-- 
-							<div class="weather col-xs-3">
-										<img ng-src={{day.icon}}></ng-src>
+							<div class="bb-pic">
+								<img ng-src={{data.media.listImage.url}}></ng-src>
 							</div>
-							<div class="col-xs-1"></div>
-							<div class="high col-xs-2">
-										{{day.high}}
-							</div>-->
+							<div class="bb-desc">
+								{{data.media.listImage.altText}}
+							</div>
 						</div>
 					</div>
 				</div>      
