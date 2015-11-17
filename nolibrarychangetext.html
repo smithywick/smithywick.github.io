@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<script>
+			function colorPara(thisColor){
+				var para = document.getElementById("para").firstChild;
+				var textNode = document.createTextNode("Changed text"); 
+				document.getElementById("para").removeChild(para);			
+				document.getElementById("para").appendChild(textNode);
+				document.getElementById("para").style.color = thisColor;
+			}
+			
+		</script>
+		
+		<style>
+
+		</style>
+
+	</head>
+
+	<body>
+
+		<div>
+			<button onClick="colorPara('blue');">Blue</button>
+			<button onClick="colorPara('red');">Red</button>
+			<p id="para">Here's some text</p>
+		</div>
+
+	</body>
+
+</html>
