@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+	
+		<style>
+		
+		</style>
+		
+		<script>
+		
+		</script>
+
+	</head>
+
+	<body ng-app="BookApp">
+		<div class="header">
+			<div class="container">  </div>
+		</div>
+		<div class="main">
+			<div class="container">
+				<div ng-view></div>
+			</div>
+		</div>
+		
+		<!-- Angular section -->
+		<script>
+			//Modules
+			var app = angular.module('BookApp', ['ngRoute']);
+			
+			app.config(['$routeProvider',function($routeProvider){
+				$routeProvider.when('/',{
+					controller: 'LibraryController',
+					templateUrl: 'https://raw.githubusercontent.com/smithywick/angular/master/angular/mybookapplibrary.html'
+				}).when('/:id',{
+					controller: 'BookController',
+					templateUrl: 'book.html'
+				}).otherwise({
+					redirectTo: '/'
+				});		
+			}]);
+			
+			
+			//Controllers
+			app.controller('LibraryController',['$scope', 'librarydata', function($scope, librarydata){
+				librarydata.success(function(data){
+					$scope.library = data;
+				}).error(function(data){
+					$scope.library = data;
+				});
+			}]);
+			
+			app.controller('BookController',['$scope', 'bookdata', '$routeParams', function($scope, bookdata, $routeParams){
+				bookdata.success(function(data){
+					$scope.book = data.books[$routeParams.id];
+				}).error(function(data){
+					$scope.book = data.books[$routeParams.id];
+				});
+			}]);
+			
+			// Services
+			app.factory('librarydata',['$http', function($http){
+				$http.get('https://raw.githubusercontent.com/smithywick/angular/master/angular/books.json').success(function(data){
+					return data;
+				}).error(function(data){
+					return data;
+				});
+			}]);
+			
+			app.factory('bookdata',['$http',function($http){
+				$http.get('').success(function(data){
+					return data;
+				}).error(function(data){
+					return data;
+				});
+			}]);	
+		</script>
+	</body>
+
+</html>
