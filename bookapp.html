@@ -73,9 +73,9 @@
 			
 			app.controller('BookController',['$scope', 'bookdata', '$routeParams', function($scope, bookdata, $routeParams){
 				bookdata.success(function(data){
-					$scope.book = data.books[$routeParams.id];
+					$scope.book = data;//.book[$routeParams.id];
 				}).error(function(data){
-					$scope.book = data.books[$routeParams.id];
+					$scope.book = data;//.book[$routeParams.id];
 				});
 			}]);
 			
@@ -89,7 +89,7 @@
 			}]);
 			
 			app.factory('bookdata',['$http',function($http){
-				return $http.get('').success(function(data){
+				return $http.get('json/book-carol.json').success(function(data){
 					return data;
 				}).error(function(data){
 					return data;
