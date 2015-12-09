@@ -1,10 +1,12 @@
 [
 	{
 		"title": "A Christmas Carol",
-		"desc": "A classic Chrismas story with a Scrooge"
+		"desc": "A classic Chrismas story with a Scrooge",
+		"img": "img/carol.jpg"
 	},
 	{
 		"title": "Frankenstein",
-		"desc": "A classic horror story about Frankenstein's monster"
+		"desc": "A classic horror story about Frankenstein's monster",
+		"img": "img/frank.png"
 	}
 ]
