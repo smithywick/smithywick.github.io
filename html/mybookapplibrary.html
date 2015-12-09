@@ -1,5 +1,7 @@
 <div class="library" ng-repeat="book in library">
-	<img ng-src="{{book.img}}">
+	<div class="img-container">
+		<img ng-src="{{book.img}}">
+	</div>
 	<h3 class="title">{{ book.title }}</h3>
 	<p>{{book.desc}}</p>
 	<br />
