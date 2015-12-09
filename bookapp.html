@@ -62,7 +62,7 @@
 			
 			// Services
 			app.factory('librarydata',['$http', function($http){
-				$http.get('json/books.json').success(function(data){
+				return $http.get('json/books.json').success(function(data){
 					return data;
 				}).error(function(data){
 					return data;
@@ -70,7 +70,7 @@
 			}]);
 			
 			app.factory('bookdata',['$http',function($http){
-				$http.get('').success(function(data){
+				return $http.get('').success(function(data){
 					return data;
 				}).error(function(data){
 					return data;
