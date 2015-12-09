@@ -33,7 +33,7 @@
 			app.config(['$routeProvider',function($routeProvider){
 				$routeProvider.when('/',{
 					controller: 'LibraryController',
-					templateUrl: 'https://raw.githubusercontent.com/smithywick/angular/master/angular/mybookapplibrary.html'
+					templateUrl: 'html/mybookapplibrary.html'
 				}).when('/:id',{
 					controller: 'BookController',
 					templateUrl: 'book.html'
@@ -62,7 +62,7 @@
 			
 			// Services
 			app.factory('librarydata',['$http', function($http){
-				$http.get('https://raw.githubusercontent.com/smithywick/angular/master/angular/books.json').success(function(data){
+				$http.get('json/books.json').success(function(data){
 					return data;
 				}).error(function(data){
 					return data;
