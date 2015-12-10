@@ -1,50 +1,150 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <link href="https://s3.amazonaws.com/codecademy-content/projects/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/main.css" rel="stylesheet" />
 
-    <!-- Include the AngularJS library -->
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
-  </head>
-  <body ng-app="WishlistApp">
-    <div class="header">
-      <div class="container">
-        <h1>Best Buy Wish List</h1>
-      </div>
-    </div>
+	<head>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+				
+		header{
+			text-align: center;
+		}
+				
+		aside{
+			float: right;
+			width: 20%;
+			padding: 1%;
+		}
+		
+		article{
+			float: left;
+			width: 80%;
+			padding: 1%;
+		}
+		
+		.tb-container{
+			width: 95%;
+			padding-left: 5%;
+		}
+		
+		a{
+			font-size: 1.4em;
+		}
+		
+		a:link{
+			text-decoration: none;
+		}
 
-    <div class="main" ng-controller="mainController">
-		<div class="container">
-			<div class="row">
-				<div class="">
-					<div class="bbdata" ng-repeat="data in bbdata">
-						<div class="data row">
-							<div class="col-md-2">
-								<img ng-src={{data.media.listImage.url}}></ng-src>
-							</div>
-							<div class="col-md-4">
-								{{data.media.listImage.altText}}<br>
-								SKU:{{data.itemId}}
-							</div>
-						</div>
-					</div>
-				</div>      
-			</div>
+		a:visited{
+			text-decoration: none;
+		}
+
+		a:hover{
+			text-decoration: none;
+			background-color: grey;
+		}
+
+		a:active{
+			text-decoration: none;
+		}
+		
+		.save-button{
+			padding-top: 1%;
+		}
+		
+		@media (max-width: 767px) {
+			.hide-767 {
+				display:none !important;
+			}
+			article{
+				width: 98%;
+			}
+		}
+				
+		</style>
+		
+		<script>
+		
+		</script>
+
+	</head>
+
+	<body>
+		<div class="nav-container">
+			<nav role="navigation" class="navbar navbar-default">
+				<div class="navbar-header">
+					<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<div id="navbarCollapse" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#">Home</a></li>
+						<li><a href="#">About</a></li>
+						<li><a href="#">Projects</a></li>
+						<li><a href="#">Contact</a></li>
+					</ul>
+				</div>
+			</nav>
 		</div>
-	</div>
+		
+		<header>
+			<h1>Example bootstrap form</h1>
+		</header>
+		
+		
 
-    <!-- Modules -->
-    <script src="js/app.js"></script>
+		<aside class="hide-767">
+			<h2>Header Font for aside</h2>
+			<h3>Smaller font body that goes on and on about nothing</h3>		
+		</aside>
+		
+		<article>
+			<h2>Header font</h2>
+			<p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+			</p>		
+			
+			<div class="tb-container">
+				<div class="row">
+					<form class="form-horizontal">
+						<div class="form-group">
+							<div class="col-sm-6 col-md-5 col-lg-5">
+								<label for="fName">First Name</label>
+								<input class="form-control" id="fName" type="text" required>
+							</div>	
+							<div class="col-sm-6 col-md-5 col-lg-5">
+								<label for="lName">Last Name</label>
+								<input class="form-control" id="lName" type="text" required>
+							</div>
+							<div class="clearfix visible-sm-block"></div>
+							<div class="col-sm-6 col-md-5 col-lg-5">
+								<label for="phone">Phone</label>
+								<input class="form-control" id="phone" type="phone" required pattern="\d\d\d-\d\d\d-\d\d\d\d" placeholder="555-555-5555">
+							</div>
+							<div class="col-sm-6 col-md-5 col-lg-5">
+								<label for="email">Email</label>
+								<input class="form-control" id="email" type="email" required placeholder="username@email.com">
+							</div>
+							<div class="clearfix visible-sm-block"></div>
+							<div class="col-sm-6 col-md-5 col-lg-5 save-button">
+								<input type="submit" value="Save" />
+							</div>						
+						</div>
+					</form>
+				</div>
+			</div>
+		<article>
+		
+		<footer>
+		All rights reserved.
+		</footer>
+		
+	</body>
 
-    <!-- Controllers -->
-    <script src="js/controllers/mainController.js"></script>
-
-    <!-- Directives -->
-    <script src="js/directives/appInfo.js"></script>
-	
-	<!-- Services -->
-	<script src="js/services/bbdata.js"></script>
-
-  </body>
 </html>
+
