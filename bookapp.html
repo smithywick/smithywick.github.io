@@ -100,6 +100,7 @@
 			//Get the current book data
 			app.factory('bookdata',['$http','$scope', function($http, $scope){
 				
+				/*
 				$scope.$watch(function () { 
 						return currentID.getID(); 
 					},
@@ -108,8 +109,9 @@
 							$scope.bookID = newValue;
 						}
 				});
+				*/
 				
-				return $http.get('json/book-{{bookID}}.json').success(function(data){
+				return $http.get('json/book-{{$scope.bookID}}.json').success(function(data){
 					return data;
 				}).error(function(data){
 					return data;
