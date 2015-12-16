@@ -81,18 +81,9 @@
 			
 			//Return the content of the current book
 			app.controller('BookController',['$scope', 'bookdata', '$routeParams', function($scope, bookdata, $routeParams){
-			
-				//This is the current books ID
-				$scope.bookID =$routeParams.id;
 				
-				/*tested out a watcher, don't need
-				$scope.$watch('bookID', function (newValue, oldValue) {
-					if (newValue !== oldValue) {
-						currentID.setID(newValue);
-					};
-				});*/
-					
-				$scope.book = bookdata.getBookData($scope.bookID);
+				//Set book = the book id's data
+				$scope.book = bookdata.getBookData($routeParams.id);
 				 console.log($scope.book);
 			}]);
 							
@@ -107,22 +98,9 @@
 							return data;
 						});
 					}
-				}
+				};
 			}]);	
 			
-			/*Return or store the current books ID
-			app.factory('currentID', function(){
-				var bID = 0;
-				
-				return{
-					getID: function(){
-						return bID;
-					},
-					setID: function(newValue){
-						bID = newValue;
-					}
-				};
-			});*/
 		</script>
 	</body>
 
