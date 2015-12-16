@@ -93,21 +93,20 @@
 				});*/
 					
 				$scope.book = bookdata.getBookData($scope.bookID);
+				 console.log($scope.book);
 			}]);
 							
 			//Get the current book data
 			app.factory('bookdata',['$http', function($http){
 			
-				var bookJSON = {};
-				var thisFunct = {};				
-				thisFunct.getBookData = function(id) {
+				var bookDataID = function(id) {
 					return $http.get('json/book-' + id + '.json').success(function(data){
-						bookJSON = data;
+						return data;
 					}).error(function(data){
-						bookJSON = data;
+						return data;
 					});
 				 }
-				 return bookJSON;
+				 return bookDataID;
 			}]);	
 			
 			/*Return or store the current books ID
