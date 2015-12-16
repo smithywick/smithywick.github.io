@@ -100,10 +100,10 @@
 			
 				var bookDataID = {};				
 				bookDataID.getBookData = function(id) {
+					alert(id);
 					return $http.get('json/book-' + id + '.json');
 				 }
 				 return bookDataID;
-
 			}]);	
 			
 			//Return or store the current books ID
