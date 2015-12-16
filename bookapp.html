@@ -85,7 +85,9 @@
 				//This is the current books ID
 				$scope.bookID =$routeParams.id;
 				$scope.$watch('bookID', function (newValue, oldValue) {
-					if (newValue !== oldValue) currentID.setID(newValue);
+					if (newValue !== oldValue) {
+						currentID.setID(newValue);
+					}
 				});
 						
 				bookdata.success(function(data){
@@ -102,7 +104,9 @@
 						return currentID.getID(); 
 					},
 					function (newValue, oldValue) {
-						if (newValue !== oldValue) $scope.bookID = newValue;
+						if (newValue !== oldValue) {
+							$scope.bookID = newValue;
+						}
 				});
 				
 				return $http.get('json/book-' + $scope.bookID + '.json').success(function(data){
