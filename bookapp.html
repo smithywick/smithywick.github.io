@@ -99,14 +99,15 @@
 			//Get the current book data
 			app.factory('bookdata',['$http', function($http){
 			
-				var bookDataID = function(id) {
+				var bookDataContent = {};				
+				bookDataContent.getBookData = function(id) {
 					return $http.get('json/book-' + id + '.json').success(function(data){
 						return data;
 					}).error(function(data){
 						return data;
 					});
 				 }
-				 return bookDataID;
+				 return bookDataContent;
 			}]);	
 			
 			/*Return or store the current books ID
