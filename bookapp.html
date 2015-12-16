@@ -80,32 +80,30 @@
 			}]);
 			
 			//Return the content of the current book
-			app.controller('BookController',['$scope', 'bookdata', 'currentID', '$routeParams', function($scope, bookdata, currentID, $routeParams){
+			app.controller('BookController',['$scope', 'bookdata', '$routeParams', function($scope, bookdata, $routeParams){
 			
 				//This is the current books ID
 				$scope.bookID =$routeParams.id;
 				$scope.$watch('bookID', function (newValue, oldValue) {
 					if (newValue !== oldValue) {
 						currentID.setID(newValue);
-					}
+					};
 				});
 						
-				bookdata.success(function(data){
-					$scope.book = data;
-				}).error(function(data){
-					$scope.book = data;
-				});
+				$scope.book = function() {
+					bookdata.getBookData($scope.bookID);
+				 };
 			}]);
 							
 			//Get the current book data
-			app.factory('bookdata',['$http','$scope', function($http, $scope){
-				
-				var bookUrl = 'json/book-' + $scope.bookID + '.json'
-				return $http.get(bookUrl).success(function(data){
-					return data;
-				}).error(function(data){
-					return data;
-				});
+			app.factory('bookdata',['$http', function($http){
+			
+				var bookDataID = {};				
+				bookDataID.getBookData = function(id) {
+					return $http.get('json/book-' + id + '.json');
+				 }
+				 return bookDataID;
+
 			}]);	
 			
 			//Return or store the current books ID
