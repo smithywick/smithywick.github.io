@@ -100,6 +100,7 @@
 			
 				var bookDataID = {};				
 				bookDataID.getBookData = function(id) {
+					console.log('this is the id: ' + id);
 					return $http.get('json/book' + id + 'json').success(function(data){
 						return data;
 					}).error(function(data){
