@@ -82,7 +82,7 @@
 					$scope.copy = JSON.parse(data.copy);
 				}).error(function(data){
 					$scope.title = data.title;
-					$scope.copy = JSON.parse(data.copy);
+					$scope.copy = angular.fromJson(data.copy);
 				});
 			}]);
 							
