@@ -80,7 +80,7 @@
 			}]);
 			
 			//Return the content of the current book
-			app.controller('BookController',['$scope', 'bookdata', '$routeParams', function($scope, bookdata, $routeParams){
+			app.controller('BookController',['$scope', 'bookdata', 'currentID', $routeParams', function($scope, bookdata, currentID, $routeParams){
 			
 				//This is the current books ID
 				$scope.bookID =$routeParams.id;
