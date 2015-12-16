@@ -100,7 +100,11 @@
 			
 				var bookDataID = {};				
 				bookDataID.getBookData = function(id) {
-					return $http.get('json/book-1.json');
+					return $http.get('json/book-1.json').success(function(data){
+						return data;
+					}).error(function(data){
+						return data;
+					});
 				 }
 				 return bookDataID;
 			}]);	
