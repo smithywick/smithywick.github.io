@@ -93,14 +93,14 @@
 				});*/
 					
 				$scope.book = bookdata.getBookData($scope.bookID);
-				return $scope.book;
 			}]);
 							
 			//Get the current book data
 			app.factory('bookdata',['$http', function($http){
 			
-				var bookJSON = {};				
-				getBookData = function(id) {
+				var bookJSON = {};
+				var thisFunct = {};				
+				thisFunct.getBookData = function(id) {
 					return $http.get('json/book-' + id + '.json').success(function(data){
 						bookJSON = data;
 					}).error(function(data){
