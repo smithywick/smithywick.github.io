@@ -78,15 +78,14 @@
 			app.controller('BookController',['$scope', 'bookdata', '$routeParams', function($scope, bookdata, $routeParams){
 				
 				bookdata.getBookData($routeParams.id).success(function(data){
-					$scope.book = [
-						angular.fromJson(data.title),
-						angular.fromJson(data.copy)
-					];
+					$scope.book ={"title": data.title,
+						"copy": JSON.parse(data.copy)
+					};
 				}).error(function(data){
-					$scope.book = [
-						angular.fromJson(data.title),
-						angular.fromJson(data.copy)
-					];
+					$scope.book = 
+						{"title": data.title,
+						"copy": JSON.parse(data.copy)
+					};
 				});
 			}]);
 							
