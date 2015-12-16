@@ -92,7 +92,7 @@
 						
 				return{
 					getBookData: function(id) {
-						$http.get('json/book-' + id + '.json').success(function(data){
+						return $http.get('json/book-' + id + '.json').success(function(data){
 							return data;
 						}).error(function(data){
 							return data;
