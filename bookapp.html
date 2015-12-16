@@ -56,7 +56,7 @@
 			}]);
 			
 					
-			//Return the all of the books display data in the library (e.g. title, picture location)
+			//Get all of the books display data in the library (e.g. title, picture location)
 			app.controller('LibraryController',['$scope', 'librarydata', function($scope, librarydata){
 				librarydata.success(function(data){
 					$scope.library = data;
@@ -74,25 +74,22 @@
 				});
 			}]);
 			
-			//Return the content of the current book
+			//Get the content of the current book based on the route parameter
 			app.controller('BookController',['$scope', 'bookdata', '$routeParams', function($scope, bookdata, $routeParams){
 				
-				//Set book = the book id's data
 				bookdata.getBookData($routeParams.id).success(function(data){
 					$scope.book = data;
 				}).error(function(data){
 					$scope.book = data;
 				});
-				 console.log($scope.book);
 			}]);
 							
-			//Get the current book data
+			//Function to support BookController
 			app.factory('bookdata',['$http', function($http){
 						
 				return{
 					getBookData: function(id) {
-						return $http.get('json/book-' + id + '.json').success(function(data){
-						
+						return $http.get('json/book-' + id + '.json').success(function(data){					
 							return data;
 						}).error(function(data){
 							return data;
