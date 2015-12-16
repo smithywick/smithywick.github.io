@@ -100,7 +100,7 @@
 			//Get the current book data
 			app.factory('bookdata',['$http','$scope', function($http, $scope){
 				
-				var bookUrl = 'json/book-' + {{$scope.bookID}} + '.json'
+				var bookUrl = 'json/book-' + $scope.bookID + '.json'
 				return $http.get(bookUrl).success(function(data){
 					return data;
 				}).error(function(data){
