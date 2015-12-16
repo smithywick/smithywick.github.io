@@ -61,8 +61,8 @@
 				});		
 			}]);
 			
-			
-			//Controllers
+					
+			//Return the all of the books display data in the library (e.g. title, picture location)
 			app.controller('LibraryController',['$scope', 'librarydata', function($scope, librarydata){
 				librarydata.success(function(data){
 					$scope.library = data;
@@ -71,15 +71,7 @@
 				});
 			}]);
 			
-			app.controller('BookController',['$scope', 'bookdata', '$routeParams', function($scope, bookdata, $routeParams){
-				bookdata.success(function(data){
-					$scope.book = data;//.book[$routeParams.id];
-				}).error(function(data){
-					$scope.book = data;//.book[$routeParams.id];
-				});
-			}]);
-			
-			// Services
+			//Get all of the current books in the library
 			app.factory('librarydata',['$http', function($http){
 				return $http.get('json/books.json').success(function(data){
 					return data;
@@ -88,13 +80,52 @@
 				});
 			}]);
 			
-			app.factory('bookdata',['$http',function($http){
-				return $http.get('json/book-carol.json').success(function(data){
+			//Return the content of the current book
+			app.controller('BookController',['$scope', 'bookdata', '$routeParams', function($scope, bookdata, $routeParams){
+			
+				//This is the current books ID
+				$scope.bookID = '';
+				$scope.$watch('bookID', function (newValue, oldValue) {
+					if (newValue !== oldValue) currentID.setID(newValue);
+				});
+						
+				bookdata.success(function(data){
+					$scope.book = bookData;
+				}).error(function(data){
+					$scope.book = bookData;
+				});
+			}]);
+							
+			//Get the current book data
+			app.factory('bookdata',['$http','$scope', function($http, $scope){
+				
+				$scope.$watch(function () { 
+						return currentID.getID(); 
+					},
+					function (newValue, oldValue) {
+						if (newValue !== oldValue) $scope.bookID = newValue;
+				});
+				
+				return $http.get('json/book-' + $scope.bookID + '.json').success(function(data){
 					return data;
 				}).error(function(data){
 					return data;
 				});
 			}]);	
+			
+			//Return or store the current books ID
+			app.factory('currentID', function(){
+				var bID = 0;
+				
+				return{
+					getID: function(){
+						return bID;
+					},
+					setID: function(newValue){
+						bID = newValue;
+					}
+				};
+			});
 		</script>
 	</body>
 
