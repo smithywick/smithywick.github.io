@@ -56,7 +56,7 @@
 			}]);
 			
 					
-			//Get all of the books display data in the library (e.g. title, picture location)
+			//Getall of the books display data in the library (e.g. title, picture location)
 			app.controller('LibraryController',['$scope', 'librarydata', function($scope, librarydata){
 				librarydata.success(function(data){
 					$scope.library = data;
@@ -78,14 +78,9 @@
 			app.controller('BookController',['$scope', 'bookdata', '$routeParams', function($scope, bookdata, $routeParams){
 				
 				bookdata.getBookData($routeParams.id).success(function(data){
-					$scope.book ={"title": data.title,
-						"copy": JSON.parse(data.copy)
-					};
+					$scope.book = JSON.parse(data);
 				}).error(function(data){
-					$scope.book = 
-						{"title": data.title,
-						"copy": JSON.parse(data.copy)
-					};
+					$scope.book = JSON.parse(data);
 				});
 			}]);
 							
