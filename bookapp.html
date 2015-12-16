@@ -83,7 +83,11 @@
 			app.controller('BookController',['$scope', 'bookdata', '$routeParams', function($scope, bookdata, $routeParams){
 				
 				//Set book = the book id's data
-				$scope.book = bookdata.getBookData($routeParams.id);
+				bookdata.getBookData($routeParams.id).success(function(data){
+					$scope.book = data;
+				}).error(function(data){
+					$scope.book = data;
+				});
 				 console.log($scope.book);
 			}]);
 							
