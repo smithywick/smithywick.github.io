@@ -80,7 +80,7 @@
 			}]);
 			
 			//Return the content of the current book
-			app.controller('BookController',['$scope', 'bookdata', 'currentID', $routeParams', function($scope, bookdata, currentID, $routeParams){
+			app.controller('BookController',['$scope', 'bookdata', 'currentID', '$routeParams', function($scope, bookdata, currentID, $routeParams){
 			
 				//This is the current books ID
 				$scope.bookID =$routeParams.id;
@@ -92,7 +92,7 @@
 				
 				console.log($scope.bookID);		
 				$scope.book = function() {
-					bookdata.bookDataID.getBookData($scope.bookID);
+					bookdata.getBookData($scope.bookID);
 				 };
 			}]);
 							
@@ -107,7 +107,6 @@
 						return data;
 					});
 				 }
-				 console.log(bookDataID);
 				 return bookDataID;
 			}]);	
 			
