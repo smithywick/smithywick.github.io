@@ -46,14 +46,13 @@
 		
 		<!-- Angular section -->
 		<script>
-			//Modules
 			var app = angular.module('BookApp', ['ngRoute']);
 			
 			app.config(['$routeProvider',function($routeProvider){
 				$routeProvider.when('/',{
 					controller: 'LibraryController',
 					templateUrl: 'html/mybookapplibrary.html'
-				}).when('/:id',{
+				}).when('/books/:id',{
 					controller: 'BookController',
 					templateUrl: 'book.html'
 				}).otherwise({
@@ -84,7 +83,7 @@
 			app.controller('BookController',['$scope', 'bookdata', '$routeParams', function($scope, bookdata, $routeParams){
 			
 				//This is the current books ID
-				$scope.bookID = '';
+				$scope.bookID =$routeParams.id;
 				$scope.$watch('bookID', function (newValue, oldValue) {
 					if (newValue !== oldValue) currentID.setID(newValue);
 				});
