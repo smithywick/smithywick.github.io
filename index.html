@@ -59,23 +59,40 @@
 		}
 		
 		.container {
-		  max-width: 960px;
-		  margin: 0 auto;
+			max-width: 960px;
+			margin: 0 auto;
 		}
 		
 		.para {
-		  height: 600px;
-		  background-position: 50% 50%;
-		  background-repeat: no-repeat;
-		  background-attachment: fixed;
-		  background-size: cover;
+			height: 600px;
+			 background-position: 50% 50%;
+			 background-repeat: no-repeat;
+			 background-attachment: fixed;
+			 background-size: cover;
+			 color: white;	
+			 text-align: left;
 		}
 		
 		.para-1 {
-		  background-image: url("https://raw.githubusercontent.com/smithywick/smithywick.github.io/master/img/para-1.png");
+			background: 
+				linear-gradient(
+				  rgba(0, 0, 0, 0.5),
+				  rgba(0, 0, 0, 0.5)
+				),
+				url("https://raw.githubusercontent.com/smithywick/smithywick.github.io/master/img/para-1.png");
 		}
 		.para-2 {
-		  background-image: url("https://raw.githubusercontent.com/smithywick/smithywick.github.io/master/img/para-2.png");
+			background: 
+				linear-gradient(
+				  rgba(0, 0, 0, 0.5),
+				  rgba(0, 0, 0, 0.5)
+				),
+				url("https://raw.githubusercontent.com/smithywick/smithywick.github.io/master/img/para-2.png");
+		  text-align: center;
+		}
+		
+		.para-2 .container article h2{
+			padding-top: 35%;
 		}
 		
 		@media (max-width: 767px) {
