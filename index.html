@@ -78,11 +78,7 @@
 			color: white;	
 			text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.74);
 		}
-		
-		.para-2 .container article h2{
-			padding-top: 10%;
-		}
-		
+				
 		.project-container{
 			text-align: center;
 		}
@@ -106,6 +102,16 @@
 			.project-container div img{
 				width: 150px;
 				height: 150px;
+				max-width: 100%;
+			}
+			.project-img{
+				float:left;
+				width: 48%;
+				display: block;
+			}
+			.project-text{
+				float:right;
+				width: 48%;
 				display: block;
 			}
 		}
@@ -144,27 +150,48 @@
 		<section class="module para para-1">
 			<div class="container">
 				<header>
-					<h1>Welcome to my HomePage</h1>
-					<h4>Here you'll find demo's for Angular and Responsive Web Pages</h4>
+					<h1>Welcome to my GitHub</h1>
+					<h4>Here you'll find demos for Angular and Responsive Web Pages</h4>
 				</header>
 			</div>
 		</section>
 		
 		<section class="module para">
 			<div class="container">
-				<h2>Projects</h2>
+				<h2>Sample code</h2>
 				<div class="row project-container">
-						<div class="col-sm-4">							
-							<img src="https://raw.githubusercontent.com/smithywick/smithywick.github.io/master/img/html5-logo.png">
-							<a href="/canvas.html">HTML5 Canvas</a>
+						<div class="col-sm-4 clearfix">
+							<div class="project-img">
+								<img src="https://raw.githubusercontent.com/smithywick/smithywick.github.io/master/img/html5-logo.png">
+							</div>
+							<div class="project-text">
+								<a href="/canvas.html">HTML5 Canvas</a>
+								<p>
+									Customizable grid to paint with your cursor.
+								</p>
+							</div>
 						</div>
-						<div class="col-sm-4">						
-							<img src="https://raw.githubusercontent.com/smithywick/smithywick.github.io/master/img/angular-logo.png">
-							<a href="/bookapp.html">Angular Book Reader</a>
+						<div class="col-sm-4 clearfix">
+							<div class="project-img">
+								<img src="https://raw.githubusercontent.com/smithywick/smithywick.github.io/master/img/bootstrap-logo.png">
+							</div>
+							<div class="project-text">
+								<a href="/bootstrapform.html">Bootstrap Lead Form</a>
+								<p>
+									Responsive lead form using Twitter Bootstrap.
+								</p>
+							</div>
 						</div>
-						<div class="col-sm-4">
-							<img src="https://raw.githubusercontent.com/smithywick/smithywick.github.io/master/img/bootstrap-logo.png">
-							<a href="/bootstrapform.html">Bootstrap Lead Form</a>
+						<div class="col-sm-4 clearfix">
+							<div class="project-img">						
+								<img src="https://raw.githubusercontent.com/smithywick/smithywick.github.io/master/img/angular-logo.png">
+							</div>
+							<div class="project-text">
+								<a href="/bookapp.html">Angular Book Reader</a>
+								<p>
+									A bookreader with timeless classics powered by Angular routing.
+								</p>
+							</div>
 						</div>						
 				</div>
 			</div>
