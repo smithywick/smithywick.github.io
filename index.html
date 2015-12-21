@@ -77,17 +77,17 @@
 			height: 300px;
 			width: 100%;
 			background: rgba(0,0,0,1);
-			background: -moz-linear-gradient(top, rgba(0,0,0,.18) 0%, rgba(66,66,66,.18) 0%, rgba(26,26,26,.18) 0%, rgba(79,79,79,.18) 0%, rgba(0,0,0,.18) 0%, rgba(102,102,102,1) 100%);
-			background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,0,0,.18)), color-stop(0%, rgba(66,66,66,.18)), color-stop(0%, rgba(26,26,26,.18)), color-stop(0%, rgba(79,79,79,.18)), color-stop(0%, rgba(0,0,0,.18)), color-stop(100%, rgba(102,102,102,1)));
-			background: -webkit-linear-gradient(top, rgba(0,0,0,.18) 0%, rgba(66,66,66,.18) 0%, rgba(26,26,26,.18) 0%, rgba(79,79,79,.18) 0%, rgba(0,0,0,.18) 0%, rgba(102,102,102,1) 100%);
-			background: -o-linear-gradient(top, rgba(0,0,0,.18) 0%, rgba(66,66,66,.18) 0%, rgba(26,26,26,.18) 0%, rgba(79,79,79,.18) 0%, rgba(0,0,0,.18) 0%, rgba(102,102,102,1) 100%);
-			background: -ms-linear-gradient(top, rgba(0,0,0,.18) 0%, rgba(66,66,66,.18) 0%, rgba(26,26,26,.18) 0%, rgba(79,79,79,.18) 0%, rgba(0,0,0,.18) 0%, rgba(102,102,102,1) 100%);
-			background: linear-gradient(to bottom, rgba(0,0,0,.18) 0%, rgba(66,66,66,.18) 0%, rgba(26,26,26,.18) 0%, rgba(79,79,79,.18) 0%, rgba(0,0,0,.18) 0%, rgba(102,102,102,1) 100%);
+			background: -moz-linear-gradient(top, rgba(0,0,0,.58) 0%, rgba(66,66,66,.58) 0%, rgba(26,26,26,.58) 0%, rgba(79,79,79,.58) 0%, rgba(0,0,0,.58) 0%, rgba(102,102,102,1) 100%);
+			background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,0,0,.58)), color-stop(0%, rgba(66,66,66,.58)), color-stop(0%, rgba(26,26,26,.58)), color-stop(0%, rgba(79,79,79,.58)), color-stop(0%, rgba(0,0,0,.58)), color-stop(100%, rgba(102,102,102,1)));
+			background: -webkit-linear-gradient(top, rgba(0,0,0,.58) 0%, rgba(66,66,66,.58) 0%, rgba(26,26,26,.58) 0%, rgba(79,79,79,.58) 0%, rgba(0,0,0,.58) 0%, rgba(102,102,102,1) 100%);
+			background: -o-linear-gradient(top, rgba(0,0,0,.58) 0%, rgba(66,66,66,.58) 0%, rgba(26,26,26,.58) 0%, rgba(79,79,79,.58) 0%, rgba(0,0,0,.58) 0%, rgba(102,102,102,1) 100%);
+			background: -ms-linear-gradient(top, rgba(0,0,0,.58) 0%, rgba(66,66,66,.58) 0%, rgba(26,26,26,.58) 0%, rgba(79,79,79,.58) 0%, rgba(0,0,0,.58) 0%, rgba(102,102,102,1) 100%);
+			background: linear-gradient(to bottom, rgba(0,0,0,.58) 0%, rgba(66,66,66,.58) 0%, rgba(26,26,26,.58) 0%, rgba(79,79,79,.58) 0%, rgba(0,0,0,.58) 0%, rgba(102,102,102,1) 100%);
 			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#666666', GradientType=0 );
 			color: white;	
 			position: absolute;
 			top: 0px;
-			z-index: 1;
+			z-index: 2;
 		}
 		
 		.para-0-copy{
@@ -190,7 +190,7 @@
 			
 		   $(document).ready(function(){
 				$('.para-1, .para-2, .para-0, .para-0-overlay').height($(window).height()-50);	
-				$('#scrollCopy').css({top:$(window).height()-170 + 'px'});				
+				$('#scrollCopy').css({top:$(window).height()-270 + 'px'});				
 			});
 
 		</script>
@@ -226,10 +226,11 @@
 		</div>
 		<div class="para-0-copy" id="scrollCopy">
 			<p>
-				Welcome to Chad Smith's Github repo. <br />
-				Please please feel free to scroll down to <br />
-				view some of my recent project I've made using <br />
-				Angular, HTML5, and Twitter Bootstrap.
+				Welcome to Chad's Github repo. <br />
+				Please please feel free to <br /> 
+				scroll down to view some of <br />
+				my recent project I've made using <br />
+				Angular, HTML5, and Bootstrap.
 			</p>
 		</div>
 		
