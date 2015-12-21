@@ -72,31 +72,14 @@
 			margin-top: -75px;
 			z-index: -1;
 		}
-		
-		.para-0-overlay{
-			height: 300px;
-			width: 100%;
-			background: rgba(0,0,0,1);
-			background: -moz-linear-gradient(top, rgba(0,0,0,.58) 0%, rgba(66,66,66,.58) 0%, rgba(26,26,26,.58) 0%, rgba(79,79,79,.58) 0%, rgba(0,0,0,.58) 0%, rgba(102,102,102,1) 100%);
-			background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,0,0,.58)), color-stop(0%, rgba(66,66,66,.58)), color-stop(0%, rgba(26,26,26,.58)), color-stop(0%, rgba(79,79,79,.58)), color-stop(0%, rgba(0,0,0,.58)), color-stop(100%, rgba(102,102,102,1)));
-			background: -webkit-linear-gradient(top, rgba(0,0,0,.58) 0%, rgba(66,66,66,.58) 0%, rgba(26,26,26,.58) 0%, rgba(79,79,79,.58) 0%, rgba(0,0,0,.58) 0%, rgba(102,102,102,1) 100%);
-			background: -o-linear-gradient(top, rgba(0,0,0,.58) 0%, rgba(66,66,66,.58) 0%, rgba(26,26,26,.58) 0%, rgba(79,79,79,.58) 0%, rgba(0,0,0,.58) 0%, rgba(102,102,102,1) 100%);
-			background: -ms-linear-gradient(top, rgba(0,0,0,.58) 0%, rgba(66,66,66,.58) 0%, rgba(26,26,26,.58) 0%, rgba(79,79,79,.58) 0%, rgba(0,0,0,.58) 0%, rgba(102,102,102,1) 100%);
-			background: linear-gradient(to bottom, rgba(0,0,0,.58) 0%, rgba(66,66,66,.58) 0%, rgba(26,26,26,.58) 0%, rgba(79,79,79,.58) 0%, rgba(0,0,0,.58) 0%, rgba(102,102,102,1) 100%);
-			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#666666', GradientType=0 );
-			color: white;	
-			position: absolute;
-			top: 0px;
-			z-index: 2;
-		}
-		
+				
 		.para-0-copy{
 			top: 700px;
 			width: 80%;
 			z-index: 0;
 			position: absolute;
 			color: white;
-			opacity: 0.1;
+			opacity: 0.0;
 			text-align: center;
 			font-size: 1.5em;
 		}
@@ -173,24 +156,47 @@
 		
 		<script>
 		
+		var scroller = (function(){
+			var scrollCopy = 0;
+			var topPos = 140;
+				
+			return{
+				scrollCopy: scrollCopy,
+				topPos: topPos
+			};
+		})();
+		
 		window.addEventListener('mousewheel', function(e){
 			if($(this).scrollTop() === 0 && e.wheelDelta>=0) {
-			var pos = $("#scrollCopy").offset();
-			if(pos.top>140){
-				$('#scrollCopy').css({marginTop: '-=5px'});
-				$('#scrollCopy').css({opacity: '+=.01'});
+				var pos = $("#scrollCopy" + scroller.scrollCopy).offset();
+				console.log(pos.top + " " + scroller.topPos + " " + scroller.scrollCopy);
+				if(pos.top>scroller.topPos){
+					$('#scrollCopy' + scroller.scrollCopy).css({marginTop: '-=20px'});
+					$('#scrollCopy' + scroller.scrollCopy).css({opacity: '+=.03'});
+				}
+				else if(pos.top<=scroller.topPos && scroller.scrollCopy !==4){
+					$('#scrollCopy' + scroller.scrollCopy).css({opacity: '1'});
+					scroller.scrollCopy +=1;
+				    scroller.topPos += 40;
+				}
+				else if(pos.top<=scroller.topPos && scroller.scrollCopy ===4){
+					$('#scrollCopy' + scroller.scrollCopy).css({opacity: '1'});
+				}
 			}
-			}
-			if ($(window).scrollTop() > 500) {
+			if ($(window).scrollTop() > 0) {
 				$('nav').addClass('navbar-fixed-top');						
-			} else if($(window).scrollTop() < 500 && $(window).scrollTop() >0) {
+			} else{
 				$('nav').removeClass('navbar-fixed-top');							
 			}
 		});			 
 			
 		   $(document).ready(function(){
-				$('.para-1, .para-2, .para-0, .para-0-overlay').height($(window).height()-50);	
-				$('#scrollCopy').css({top:$(window).height()-270 + 'px'});				
+				$('.para-1, .para-2, .para-0').height($(window).height()-50);	
+				$('#scrollCopy0').css({top:$(window).height()-270 + 'px'});	
+				$('#scrollCopy1').css({top:$(window).height()-270 + 'px'});
+				$('#scrollCopy2').css({top:$(window).height()-270 + 'px'});
+				$('#scrollCopy3').css({top:$(window).height()-270 + 'px'});
+				$('#scrollCopy4').css({top:$(window).height()-270 + 'px'});
 			});
 
 		</script>
@@ -210,7 +216,7 @@
 			</div>
 			<div id="navbarCollapse" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li class="active"><a data-toggle="collapse" data-target=".navbar-collapse" href="#">Home</a></li>
+					<li class="active"><a href="#">Home</a></li>
 					<li><a href="#about">About</a></li>
 					<li><a href="#projects">Projects</a></li>
 					<li><a href="#contact">Contact</a></li>
@@ -222,16 +228,24 @@
 			<p>Scroll up to continue</p>
 		</section>
 		
-		<div class="para-0-overlay">
+		<div class="para-0-copy" id="scrollCopy0">
+			Welcome to Chad's Github repo.
 		</div>
-		<div class="para-0-copy" id="scrollCopy">
-			<p>
-				Welcome to Chad's Github repo. <br />
-				Please please feel free to <br /> 
-				scroll down to view some of <br />
-				my recent project I've made using <br />
-				Angular, HTML5, and Bootstrap.
-			</p>
+		
+		<div class="para-0-copy" id="scrollCopy1">
+			Please please feel free to 
+		</div>
+		
+		<div class="para-0-copy" id="scrollCopy2">
+			scroll down to view some of
+		</div>
+		
+		<div class="para-0-copy" id="scrollCopy3">
+			my recent project I've made using <br />
+		</div>
+		
+		<div class="para-0-copy" id="scrollCopy4">
+			Angular, HTML5, and Bootstrap.
 		</div>
 		
 		
