@@ -181,6 +181,8 @@
 				}
 				else if(pos.top<=scroller.topPos && scroller.scrollCopy ===4){
 					$('#scrollCopy' + scroller.scrollCopy).css({opacity: '1'});
+					$('#instructions').html('');
+					$('#instructions').append('<p>Scroll down to continue.</p>');
 				}
 			}
 			if ($(window).scrollTop() > 0) {
@@ -224,7 +226,7 @@
 			</div>
 		</nav>
 	
-		<section class="para-0">
+		<section class="para-0" id="instructions">
 			<p>Scroll up to continue</p>
 		</section>
 		
