@@ -85,7 +85,6 @@
 			background: linear-gradient(to bottom, rgba(0,0,0,.18) 0%, rgba(66,66,66,.18) 0%, rgba(26,26,26,.18) 0%, rgba(79,79,79,.18) 0%, rgba(0,0,0,.18) 0%, rgba(102,102,102,1) 100%);
 			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#666666', GradientType=0 );
 			color: white;	
-			margin-top: -75px;
 			position: absolute;
 			top: 0px;
 			z-index: 1;
@@ -97,7 +96,9 @@
 			z-index: 0;
 			position: absolute;
 			color: white;
-			opacity: 0.3;
+			opacity: 0.1;
+			text-align: center;
+			font-size: 1.5em;
 		}
 		
 		.para-0{
@@ -189,7 +190,7 @@
 			
 		   $(document).ready(function(){
 				$('.para-1, .para-2, .para-0, .para-0-overlay').height($(window).height()-50);	
-				$('.para-0-overlay').height($(window).height()+50);				
+				$('#scrollCopy').css({top:$(window).height()-170 + 'px'});				
 			});
 
 		</script>
@@ -218,17 +219,17 @@
 		</nav>
 	
 		<section class="para-0">
-			<header>
-				<h1>Chad Smith's Github Repo</h1>
-			</header>
-				<p>Scroll up to continue</p>
+			<p>Scroll up to continue</p>
 		</section>
 		
 		<div class="para-0-overlay">
 		</div>
 		<div class="para-0-copy" id="scrollCopy">
 			<p>
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+				Welcome to Chad Smith's Github repo. <br />
+				Please please feel free to scroll down to <br />
+				view some of my recent project I've made using <br />
+				Angular, HTML5, and Twitter Bootstrap.
 			</p>
 		</div>
 		
