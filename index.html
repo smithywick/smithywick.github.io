@@ -188,8 +188,8 @@
 					do{
 						pos = $("#scrollCopy" + scroller.scrollCopy).offset();
 						console.log("postop: " +pos.top + "scroller.toppos: " +scroller.topPos);
-						$('#scrollCopy' + scroller.scrollCopy).css({marginTop: '-=20px'});
-						$('#scrollCopy' + scroller.scrollCopy).css({opacity: '+=.03'});
+						$('#scrollCopy' + scroller.scrollCopy).css({marginTop: '-=5px'});
+						$('#scrollCopy' + scroller.scrollCopy).css({opacity: '+=.02'});
 					}
 					while(pos.top>scroller.topPos);
 				}
