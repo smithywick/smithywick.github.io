@@ -183,28 +183,27 @@
 			var e = d.changedTouches[0];
 				console.log('screenX: ' + e.screenX + ' screenY: ' + e.screenY + 'clientX: ' + e.clientX + ' clientY: ' + e.clientY + 'pageX: ' + e.pageX + ' pageX: ' + e.pageX);
 				console.log($(this).scrollTop());
-				if($(this).scrollTop() === 0) {
-					var pos = $("#scrollCopy" + scroller.scrollCopy).offset();
-					if(pos.top>scroller.topPos){
-						do{
-							pos = $("#scrollCopy" + scroller.scrollCopy).offset();
-							console.log("postop: " +pos.top + "scroller.toppos: " +scroller.topPos);
-							$('#scrollCopy' + scroller.scrollCopy).css({marginTop: '-=20px'});
-							$('#scrollCopy' + scroller.scrollCopy).css({opacity: '+=.03'});
-						}
-						while(pos.top>scroller.topPos);
+				var pos = $("#scrollCopy" + scroller.scrollCopy).offset();
+				if(pos.top>scroller.topPos){
+					do{
+						pos = $("#scrollCopy" + scroller.scrollCopy).offset();
+						console.log("postop: " +pos.top + "scroller.toppos: " +scroller.topPos);
+						$('#scrollCopy' + scroller.scrollCopy).css({marginTop: '-=20px'});
+						$('#scrollCopy' + scroller.scrollCopy).css({opacity: '+=.03'});
 					}
-					else if(pos.top<=scroller.topPos && scroller.scrollCopy !==4){
-						$('#scrollCopy' + scroller.scrollCopy).css({opacity: '1'});
-						scroller.scrollCopy +=1;
-						scroller.topPos += 40;
-					}
-					else if(pos.top<=scroller.topPos && scroller.scrollCopy ===4){
-						$('#scrollCopy' + scroller.scrollCopy).css({opacity: '1'});
-						$('#instructions').html('');
-						$('#instructions').append('<p>Swipe down to continue.</p>');
-					}
+					while(pos.top>scroller.topPos);
 				}
+				else if(pos.top<=scroller.topPos && scroller.scrollCopy !==4){
+					$('#scrollCopy' + scroller.scrollCopy).css({opacity: '1'});
+					scroller.scrollCopy +=1;
+					scroller.topPos += 40;
+				}
+				else if(pos.top<=scroller.topPos && scroller.scrollCopy ===4){
+					$('#scrollCopy' + scroller.scrollCopy).css({opacity: '1'});
+					$('#instructions').html('');
+					$('#instructions').append('<p>Swipe down to continue.</p>');
+				}
+
 				
 				//When scrolling down the page add the navbar at the top
 				if ($(window).scrollTop() > 0) {
