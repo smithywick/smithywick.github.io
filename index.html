@@ -181,12 +181,9 @@
 		if(isMobile()){
 			window.addEventListener('touchmove',function(d){
 			var e = d.changedTouches[0];
-				console.log('screenX: ' + e.screenX + ' screenY: ' + e.screenY + 'clientX: ' + e.clientX + ' clientY: ' + e.clientY + 'pageX: ' + e.pageX + ' pageX: ' + e.pageX);
-				console.log($(this).scrollTop());
 				var pos = $("#scrollCopy" + scroller.scrollCopy).offset();
 				if(pos.top>scroller.topPos){
 						pos = $("#scrollCopy" + scroller.scrollCopy).offset();
-						console.log("postop: " +pos.top + "scroller.toppos: " +scroller.topPos);
 						$('#scrollCopy' + scroller.scrollCopy).css({marginTop: '-=20px'});
 						$('#scrollCopy' + scroller.scrollCopy).css({opacity: '+=.04'});
 				}
@@ -198,7 +195,7 @@
 				else if(pos.top<=scroller.topPos && scroller.scrollCopy ===4){
 					$('#scrollCopy' + scroller.scrollCopy).css({opacity: '1'});
 					$('#instructions').html('');
-					$('#instructions').append('<p>Swipe down to continue.</p>');
+					$('#instructions').append('<p>Swipe up to continue.</p>');
 				}
 
 				
@@ -243,7 +240,7 @@
 	   $(document).ready(function(){
 			if(isMobile()){
 				$('#instructions').html('');
-				$('#instructions').append('<p>Swipe up to continue.</p>');
+				$('#instructions').append('<p>Swipe down to continue.</p>');
 			}
 			$('.parallax-0, .parallax-1, .parallax-2').height($(window).height()-50);	
 			$('#scrollCopy0').css({top:$(window).height()*.9 + 'px'});	
