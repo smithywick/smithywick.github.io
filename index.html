@@ -174,7 +174,6 @@
 		window.addEventListener('mousewheel', function(e){
 			if($(this).scrollTop() === 0 && e.wheelDelta>=0) {
 				var pos = $("#scrollCopy" + scroller.scrollCopy).offset();
-				console.log(pos.top + " " + scroller.topPos + " " + scroller.scrollCopy);
 				if(pos.top>scroller.topPos){
 					$('#scrollCopy' + scroller.scrollCopy).css({marginTop: '-=20px'});
 					$('#scrollCopy' + scroller.scrollCopy).css({opacity: '+=.03'});
@@ -269,10 +268,10 @@
 					<h2>Projects</h2>
 						<div class="col-sm-4 clearfix">
 							<div class="project-img">
-								<img src="https://raw.githubusercontent.com/smithywick/smithywick.github.io/master/img/html5-logo.png">
+								<a href="/canvas.html"><img src="https://raw.githubusercontent.com/smithywick/smithywick.github.io/master/img/html5-logo.png">
 							</div>
 							<div class="project-text">
-								<a href="/canvas.html">HTML5 Canvas</a>
+								HTML5 Canvas</a>
 								<p>
 									Customizable grid to paint with your cursor.
 								</p>
@@ -280,10 +279,10 @@
 						</div>
 						<div class="col-sm-4 clearfix">
 							<div class="project-img">
-								<img src="https://raw.githubusercontent.com/smithywick/smithywick.github.io/master/img/bootstrap-logo.png">
+								<a href="/bootstrapform.html"><img src="https://raw.githubusercontent.com/smithywick/smithywick.github.io/master/img/bootstrap-logo.png">
 							</div>
 							<div class="project-text">
-								<a href="/bootstrapform.html">Bootstrap Lead Form</a>
+								Bootstrap Lead Form</a>
 								<p>
 									Responsive lead form using Twitter Bootstrap.
 								</p>
@@ -291,10 +290,10 @@
 						</div>
 						<div class="col-sm-4 clearfix">
 							<div class="project-img">						
-								<img src="https://raw.githubusercontent.com/smithywick/smithywick.github.io/master/img/angular-logo.png">
+								<a href="/bookapp.html"><img src="https://raw.githubusercontent.com/smithywick/smithywick.github.io/master/img/angular-logo.png">
 							</div>
 							<div class="project-text">
-								<a href="/bookapp.html">Angular Book Reader</a>
+								Angular Book Reader</a>
 								<p>
 									A bookreader with timeless classics powered by Angular routing.
 								</p>
