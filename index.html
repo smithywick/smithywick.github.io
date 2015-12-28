@@ -186,8 +186,11 @@
 				if($(this).scrollTop() === 0) {
 					var pos = $("#scrollCopy" + scroller.scrollCopy).offset();
 					if(pos.top>scroller.topPos){
-						$('#scrollCopy' + scroller.scrollCopy).css({marginTop: '-=20px'});
-						$('#scrollCopy' + scroller.scrollCopy).css({opacity: '+=.03'});
+						while(pos.top>scroller.topPos){
+							pos = $("#scrollCopy" + scroller.scrollCopy).offset();
+							$('#scrollCopy' + scroller.scrollCopy).css({marginTop: '-=5px'});
+							$('#scrollCopy' + scroller.scrollCopy).css({opacity: '+=.01'});
+						}
 					}
 					else if(pos.top<=scroller.topPos && scroller.scrollCopy !==4){
 						$('#scrollCopy' + scroller.scrollCopy).css({opacity: '1'});
