@@ -156,7 +156,7 @@
 		//Keep track of the scrolling text div number and the top position of where the div needs to go
 		var scroller = (function(){
 			var scrollCopy = 0;
-			var topPos = 140;
+			var topPos = 100;
 				
 			return{
 				scrollCopy: scrollCopy,
@@ -198,11 +198,11 @@
 		//position each div of the scroll copy 270 pixels from the bottom.
 	   $(document).ready(function(){
 			$('.parallax-0, .parallax-1, .parallax-2').height($(window).height()-50);	
-			$('#scrollCopy0').css({top:$(window).height()-270 + 'px'});	
-			$('#scrollCopy1').css({top:$(window).height()-270 + 'px'});
-			$('#scrollCopy2').css({top:$(window).height()-270 + 'px'});
-			$('#scrollCopy3').css({top:$(window).height()-270 + 'px'});
-			$('#scrollCopy4').css({top:$(window).height()-270 + 'px'});
+			$('#scrollCopy0').css({top:$(window).height()*.9 + 'px'});	
+			$('#scrollCopy1').css({top:$(window).height()*.9 + 'px'});
+			$('#scrollCopy2').css({top:$(window).height()*.9 + 'px'});
+			$('#scrollCopy3').css({top:$(window).height()*.9 + 'px'});
+			$('#scrollCopy4').css({top:$(window).height()*.9 + 'px'});
 		});
 
 		</script>
@@ -253,8 +253,7 @@
 		<div class="parallax-0-copy" id="scrollCopy4">
 			Angular, HTML5, and Bootstrap.
 		</div>
-		
-		
+				
 		<section class="module parallax parallax-1" id="about">
 			<div class="container">
 				<h1>About section coming soon</h1>
