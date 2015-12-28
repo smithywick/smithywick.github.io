@@ -52,14 +52,15 @@
 			overflow-x: hidden !important;
 		}
 		
-		.para{
+		.parallax{
 			height: 600px;			
 			text-align: left;
 			z-index: 3;
 		}
 		
-		.para-0{
+		.parallax-0{
 			height: 300px;
+			padding-top: 15px;
 			background: rgba(0,0,0,1);
 			background: -moz-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(66,66,66,1) 0%, rgba(26,26,26,1) 0%, rgba(79,79,79,1) 0%, rgba(0,0,0,1) 0%, rgba(102,102,102,1) 100%);
 			background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,0,0,1)), color-stop(0%, rgba(66,66,66,1)), color-stop(0%, rgba(26,26,26,1)), color-stop(0%, rgba(79,79,79,1)), color-stop(0%, rgba(0,0,0,1)), color-stop(100%, rgba(102,102,102,1)));
@@ -73,7 +74,7 @@
 			z-index: -1;
 		}
 				
-		.para-0-copy{
+		.parallax-0-copy{
 			top: 700px;
 			width: 100%;
 			z-index: 0;
@@ -83,17 +84,13 @@
 			text-align: center;
 			font-size: 1.5em;
 		}
-		
-		.para-0{
-			padding-top: 15px;
-		}
-		
-		.para-0 p{
+				
+		.parallax-0 p{
 			text-align: center;
 			font-size: 1.5em;
 		}
 		
-		.para-1, .para-2{
+		.parallax-1, .parallax-2{
 			background-position: 50%;
 			background-repeat: no-repeat;
 			background-size: cover;
@@ -105,11 +102,11 @@
 			z-index: 3;
 		}
 		
-		.para-1 {
+		.parallax-1 {
 			background-image:url("https://raw.githubusercontent.com/smithywick/smithywick.github.io/master/img/para-1.png");
 			
 		}
-		.para-2 {
+		.parallax-2 {
 			background-image:url("https://raw.githubusercontent.com/smithywick/smithywick.github.io/master/img/para-2.png");
 		}
 				
@@ -189,6 +186,8 @@
 					$('#instructions').append('<p>Scroll down to continue.</p>');
 				}
 			}
+			
+			//When scrolling down the page add the navbar at the top
 			if ($(window).scrollTop() > 0) {
 				$('nav').addClass('navbar-fixed-top');						
 			} else{
@@ -198,7 +197,7 @@
 		
 		//position each div of the scroll copy 270 pixels from the bottom.
 	   $(document).ready(function(){
-			$('.para-0, .para-1, .para-2').height($(window).height()-50);	
+			$('.parallax-0, .parallax-1, .parallax-2').height($(window).height()-50);	
 			$('#scrollCopy0').css({top:$(window).height()-270 + 'px'});	
 			$('#scrollCopy1').css({top:$(window).height()-270 + 'px'});
 			$('#scrollCopy2').css({top:$(window).height()-270 + 'px'});
@@ -231,38 +230,38 @@
 			</div>
 		</nav>
 	
-		<section class="para-0" id="instructions">
+		<section class="parallax-0" id="instructions">
 			<p>Scroll up to continue</p>
 		</section>
 		
-		<div class="para-0-copy" id="scrollCopy0">
+		<div class="parallax-0-copy" id="scrollCopy0">
 			Welcome to Chad's Github repo.
 		</div>
 		
-		<div class="para-0-copy" id="scrollCopy1">
+		<div class="parallax-0-copy" id="scrollCopy1">
 			Please please feel free to 
 		</div>
 		
-		<div class="para-0-copy" id="scrollCopy2">
+		<div class="parallax-0-copy" id="scrollCopy2">
 			scroll down to view some of
 		</div>
 		
-		<div class="para-0-copy" id="scrollCopy3">
+		<div class="parallax-0-copy" id="scrollCopy3">
 			my recent project I've made using <br />
 		</div>
 		
-		<div class="para-0-copy" id="scrollCopy4">
+		<div class="parallax-0-copy" id="scrollCopy4">
 			Angular, HTML5, and Bootstrap.
 		</div>
 		
 		
-		<section class="module para para-1" id="about">
+		<section class="module parallax parallax-1" id="about">
 			<div class="container">
 				<h1>About section coming soon</h1>
 			</div>
 		</section>
 		
-		<section class="module para" id="projects">
+		<section class="module parallax" id="projects">
 			<div class="container">			
 				<div class="row project-container">
 					<h2>Projects</h2>
@@ -303,7 +302,7 @@
 			</div>
 		</section>
 		
-		<section class="module para para-2" id="contact">
+		<section class="module parallax parallax-2" id="contact">
 			<div class="container">
 				<article>
 					<h2>Contact info coming soon</h2>
