@@ -156,6 +156,7 @@
 		
 		<script>
 		
+		//Keep track of the scrolling text div number and the top position of where the div needs to go
 		var scroller = (function(){
 			var scrollCopy = 0;
 			var topPos = 140;
@@ -165,7 +166,11 @@
 				topPos: topPos
 			};
 		})();
-		
+			
+		/*Check to see if the position is at the top of the screen,
+		 *if so drag up the other divs in order. 
+		 *TODO: accomodate smaller screen sizes
+		 */
 		window.addEventListener('mousewheel', function(e){
 			if($(this).scrollTop() === 0 && e.wheelDelta>=0) {
 				var pos = $("#scrollCopy" + scroller.scrollCopy).offset();
@@ -190,16 +195,17 @@
 			} else{
 				$('nav').removeClass('navbar-fixed-top');							
 			}
-		});			 
-			
-		   $(document).ready(function(){
-				$('.para-0, .para-1, .para-2').height($(window).height()-50);	
-				$('#scrollCopy0').css({top:$(window).height()-270 + 'px'});	
-				$('#scrollCopy1').css({top:$(window).height()-270 + 'px'});
-				$('#scrollCopy2').css({top:$(window).height()-270 + 'px'});
-				$('#scrollCopy3').css({top:$(window).height()-270 + 'px'});
-				$('#scrollCopy4').css({top:$(window).height()-270 + 'px'});
-			});
+		});
+		
+		//position each div of the scroll copy 270 pixels from the bottom.
+	   $(document).ready(function(){
+			$('.para-0, .para-1, .para-2').height($(window).height()-50);	
+			$('#scrollCopy0').css({top:$(window).height()-270 + 'px'});	
+			$('#scrollCopy1').css({top:$(window).height()-270 + 'px'});
+			$('#scrollCopy2').css({top:$(window).height()-270 + 'px'});
+			$('#scrollCopy3').css({top:$(window).height()-270 + 'px'});
+			$('#scrollCopy4').css({top:$(window).height()-270 + 'px'});
+		});
 
 		</script>
 
