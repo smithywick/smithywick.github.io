@@ -15,21 +15,20 @@
 				
 		header{
 			text-align: center;
+			position: absolute;
+			width: 100%;
+			color: white;
+			font-size: 1.25em;
+			top: 10px;
 		}
-			
-		article{
-			float: left;
-			width: 80%;
-			padding: 1%;
-		}
-				
+							
 		a:link,
 		a:visited,
 		a:hover,
 		a:active{
 			text-decoration: none;
 		}
-				
+								
 		.container {
 			max-width: 960px;
 			margin: 0 auto;
@@ -40,8 +39,7 @@
 		}
 		
 		nav{
-			top: -50px;
-			padding-right: 20px;		
+			top: -50px;	
 		}
 		
 		.nav-container(
@@ -82,14 +80,9 @@
 			color: white;
 			opacity: 0.0;
 			text-align: center;
-			font-size: 1.5em;
+			font-size: 1.1em;
 		}
-				
-		.parallax-0 p{
-			text-align: center;
-			font-size: 1.5em;
-		}
-		
+						
 		.parallax-1, .parallax-2{
 			background-position: 50%;
 			background-repeat: no-repeat;
@@ -111,7 +104,6 @@
 		}
 				
 		.project-container{
-			text-align: center;
 			padding-top: 35px;
 		}
 		
@@ -153,67 +145,49 @@
 		
 		<script>
 		
-		//Keep track of the scrolling text div number and the top position of where the div needs to go
-		var scroller = (function(){
-			var scrollCopy = 0;
-			var topPos = 100;
-				
-			return{
-				scrollCopy: scrollCopy,
-				topPos: topPos
-			};
-		})();
-			
-		/*Check to see if the position is at the top of the screen,
-		 *if so drag up the other divs in order. 
-		 *TODO: accomodate smaller screen sizes
-		 */
-		 
-		function isMobile() {
-		 try {
-			if(/Android|webOS|iPhone|iPad|iPod|pocket|psp|kindle|avantgo|blazer|midori|Tablet|Palm|maemo|plucker|phone|BlackBerry|symbian|IEMobile|mobile|ZuneWP7|Windows Phone|Opera Mini/i.test(navigator.userAgent)) {
-			 return true;
-			};
-			return false;
-		 } catch(e){ console.log("Error in isMobile"); return false; }
-		}
+		"use strict";
 		
-		if(isMobile()){
-			window.addEventListener('touchmove',function(d){
-			var e = d.changedTouches[0];
-				var pos = $("#scrollCopy" + scroller.scrollCopy).offset();
-				if(pos.top>scroller.topPos){
-						pos = $("#scrollCopy" + scroller.scrollCopy).offset();
-						$('#scrollCopy' + scroller.scrollCopy).css({marginTop: '-=20px'});
-						$('#scrollCopy' + scroller.scrollCopy).css({opacity: '+=.04'});
-				}
-				else if(pos.top<=scroller.topPos && scroller.scrollCopy !==4){
-					$('#scrollCopy' + scroller.scrollCopy).css({opacity: '1'});
-					scroller.scrollCopy +=1;
-					scroller.topPos += 40;
-				}
-				else if(pos.top<=scroller.topPos && scroller.scrollCopy ===4){
-					$('#scrollCopy' + scroller.scrollCopy).css({opacity: '1'});
-					$('#instructions').html('');
-					$('#instructions').append('<p>Swipe up to continue.</p>');
-				}
-
+		var scrollManager = (function(){
+		
+			//Keep track of the scrolling text div number and the top position of where the div needs to go			
+			var scroller = (function(){
+				var scrollCopy = 1;
+				var topPos = 100;
+				var scrollComplete = false;
+					
+				return{
+					scrollCopy: scrollCopy,
+					topPos: topPos,
+					scrollComplete: scrollComplete
+				};
+			})();
+			
+			//module API
+			var publicAPI = {			
+				init: init
+			}
 				
-				//When scrolling down the page add the navbar at the top
-				if ($(window).scrollTop() > 0) {
-					$('nav').addClass('navbar-fixed-top');						
-				} else{
-					$('nav').removeClass('navbar-fixed-top');							
-				}			
-			});
-		}
-		else{
-			window.addEventListener('mousewheel', function(e){
-				if($(this).scrollTop() === 0 && e.wheelDelta>=0) {
+			//Check to see if the user is on a mobile device						 
+			function isMobile() {
+			 try {
+				if(/Android|webOS|iPhone|iPad|iPod|pocket|psp|kindle|avantgo|blazer|midori|Tablet|Palm|maemo|plucker|phone|BlackBerry|symbian|IEMobile|mobile|ZuneWP7|Windows Phone|Opera Mini/i.test(navigator.userAgent)) {
+				 return true;
+				};
+				return false;
+			 } catch(e){ console.log("Error in isMobile"); return false; }
+			}
+			
+			/**
+			 *Check to see if the position is at the top of the screen,
+			 *if so drag up the other divs in order. 
+			 */
+			function scrollDiv(scrollTitle){
+				if(scroller.scrollComplete === false){
 					var pos = $("#scrollCopy" + scroller.scrollCopy).offset();
 					if(pos.top>scroller.topPos){
-						$('#scrollCopy' + scroller.scrollCopy).css({marginTop: '-=20px'});
-						$('#scrollCopy' + scroller.scrollCopy).css({opacity: '+=.03'});
+							pos = $("#scrollCopy" + scroller.scrollCopy).offset();
+							$('#scrollCopy' + scroller.scrollCopy).css({marginTop: '-=20px'});
+							$('#scrollCopy' + scroller.scrollCopy).css({opacity: '+=.04'});
 					}
 					else if(pos.top<=scroller.topPos && scroller.scrollCopy !==4){
 						$('#scrollCopy' + scroller.scrollCopy).css({opacity: '1'});
@@ -222,32 +196,66 @@
 					}
 					else if(pos.top<=scroller.topPos && scroller.scrollCopy ===4){
 						$('#scrollCopy' + scroller.scrollCopy).css({opacity: '1'});
-						$('#instructions').html('');
-						$('#instructions').append('<p>Scroll down to continue. <br />Check out this page on your phone!</p>');
+						$('header').html('');
+						$('header').append(scrollTitle);
+						scroller.scrollComplete = true;
 					}
 				}
-				
-				//When scrolling down the page add the navbar at the top
+											
+			}
+			
+			function navBar (){
+			
+				//When scrolling down the page add the navbar at the top				
 				if ($(window).scrollTop() > 0) {
 					$('nav').addClass('navbar-fixed-top');						
 				} else{
 					$('nav').removeClass('navbar-fixed-top');							
-				}
-			});
-		}
-		
-		//Position each scrolling div 10% of the way from the bottom of the first parallax.
-	   $(document).ready(function(){
-			if(isMobile()){
-				$('#instructions').html('');
-				$('#instructions').append('<p>Swipe down to continue.</p>');
+				}			
 			}
-			$('.parallax-0, .parallax-1, .parallax-2').height($(window).height()-50);	
-			$('#scrollCopy0').css({top:$(window).height()*.9 + 'px'});	
-			$('#scrollCopy1').css({top:$(window).height()*.9 + 'px'});
-			$('#scrollCopy2').css({top:$(window).height()*.9 + 'px'});
-			$('#scrollCopy3').css({top:$(window).height()*.9 + 'px'});
-			$('#scrollCopy4').css({top:$(window).height()*.9 + 'px'});
+			
+			function init(){
+				
+				//Check to see if user is on a mobile device				
+				var mobileUser = isMobile();
+				
+				//Custom experiences based on the users device				
+				if(mobileUser){				
+					$('header').append("Welcome to Chad Smith's Github. <br /> Swipe down to continue.");
+					window.addEventListener('touchmove',function(e){
+										
+					//When scrolling down the page add the navbar at the top					
+					navBar();					
+					scrollDiv('<p>Swipe up to continue.</p>');		
+					});
+				}
+				else{
+					$('header').append("Welcome to Chad Smith's Github. <br /> Scroll up to continue.");
+					window.addEventListener('mousewheel', function(e){
+						if($(this).scrollTop() === 0 && e.wheelDelta>=0) {
+							scrollDiv('<p>Scroll down to continue. <br />Check out this page on your phone!</p>');
+						}
+						
+						//When scrolling down the page add the navbar at the top						
+						navBar();	
+					});
+				}
+				
+				//Set height of each parallax to the screens height -50 pixels
+				$('.parallax-0, .parallax-1, .parallax-2').height($(window).height()-50);
+				
+				//Position each scrolling div 10% of the way from the bottom of the first parallax.
+				for(var i = 0; i <= 4; i++){
+					$('#scrollCopy' +i).css({top:$(window).height()*.9 + 'px'});	
+				}				
+			}
+			
+			return publicAPI;
+									
+		})();		
+		
+	    $(document).ready(function(){
+			scrollManager.init();					
 		});
 
 		</script>
@@ -255,6 +263,10 @@
 	</head>
 
 	<body>
+		
+		<header>
+		<!-- To be edited depending on if user is mobile or not -->
+		</header>			
 		<nav role="navigation" class="navbar navbar-inverse">
 			<a class="navbar-brand navbar-left" href="#">Chad Smith's GitHub</a>
 			<div class="navbar-header">
@@ -276,13 +288,8 @@
 		</nav>
 	
 		<section class="parallax-0" id="instructions">
-			<p>Scroll up to continue</p>
 		</section>
-		
-		<div class="parallax-0-copy" id="scrollCopy0">
-			Welcome to Chad's Github repo.
-		</div>
-		
+				
 		<div class="parallax-0-copy" id="scrollCopy1">
 			Please please feel free to 
 		</div>
@@ -292,7 +299,7 @@
 		</div>
 		
 		<div class="parallax-0-copy" id="scrollCopy3">
-			my recent project I've made using <br />
+			my recent project I've made using
 		</div>
 		
 		<div class="parallax-0-copy" id="scrollCopy4">
@@ -348,9 +355,7 @@
 		
 		<section class="module parallax parallax-2" id="contact">
 			<div class="container">
-				<article>
-					<h2>Contact info coming soon</h2>
-				<article>
+				<h2>Contact info coming soon</h2>
 			</div>
 		</section>
 		
