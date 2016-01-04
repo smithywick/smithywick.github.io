@@ -146,41 +146,28 @@
 		<script>
 		
 		"use strict";
-		/*
-		need to incorporate this
-		function debounce(func, wait, immediate) {
-			var timeout;
-			return function() {
-				var context = this, args = arguments;
-				var later = function() {
-					timeout = null;
-					if (!immediate) func.apply(context, args);
-				};
-				var callNow = immediate && !timeout;
-				clearTimeout(timeout);
-				timeout = setTimeout(later, wait);
-				if (callNow) func.apply(context, args);
-			};
-		};
-
-		// Usage
-		var myEfficientFn = debounce(function() {
-			// All the taxing stuff you do
-		}, 250);
-		window.addEventListener('resize', myEfficientFn);
-		*/
+		
 		var scrollManager = (function(){
 		
-			//Keep track of the scrolling text div number and the top position of where the div needs to go			
+			//Keep track of variables			
 			var scroller = (function(){
 				var scrollCopy = 1;
 				var topPos = 100;
 				var scrollComplete = false;
+				var scrollText = "";
+				
+				if(isMobile()){
+					scrollText = '<p>Swipe up to continue.</p>';
+				}
+				else{
+					scrollText = '<p>Scroll down to continue. <br />Check out this page on your phone!</p>';
+				}
 					
 				return{
 					scrollCopy: scrollCopy,
 					topPos: topPos,
-					scrollComplete: scrollComplete
+					scrollComplete: scrollComplete,
+					scrollText: scrollText
 				};
 			})();
 			
@@ -188,7 +175,7 @@
 			var publicAPI = {			
 				init: init
 			}
-				
+			
 			//Check to see if the user is on a mobile device						 
 			function isMobile() {
 			 try {
@@ -199,11 +186,43 @@
 			 } catch(e){ console.log("Error in isMobile"); return false; }
 			}
 			
+			//Slow down events on page like scrolling
+			function debounce(func, wait, immediate) {
+				var timeout;
+				return function() {
+					var context = this, args = arguments;
+					var later = function() {
+						timeout = null;
+						if (!immediate){
+							func.apply(context, args);
+						}
+					};
+					var callNow = immediate && !timeout;
+					clearTimeout(timeout);
+					timeout = setTimeout(later, wait);
+					if (callNow){
+						func.apply(context, args);
+					}
+				};
+			};
+
+			//Don't want to fire off scrolling every single millisecond the user scrolls.
+			var slowScroll = debounce(function() {
+			
+				//Move the scroll copy up into position if at the top of the page
+				scrollDiv();
+							
+				//When scrolling down the page add the navbar at the top						
+				navBar();
+				
+			//wait time in ms
+			}, 0);
+												
 			/**
 			 *Check to see if the position is at the top of the screen,
 			 *if so drag up the other divs in order. 
 			 */
-			function scrollDiv(scrollTitle){
+			function scrollDiv(){
 				if(scroller.scrollComplete === false){
 					var pos = $("#scrollCopy" + scroller.scrollCopy).offset();
 					if(pos.top>scroller.topPos){
@@ -219,16 +238,14 @@
 					else if(pos.top<=scroller.topPos && scroller.scrollCopy ===4){
 						$('#scrollCopy' + scroller.scrollCopy).css({opacity: '1'});
 						$('header').html('');
-						$('header').append(scrollTitle);
+						$('header').append(scroller.scrollText);
 						scroller.scrollComplete = true;
 					}
-				}
-											
+				}											
 			}
 			
-			function navBar (){
-			
-				//When scrolling down the page add the navbar at the top				
+			//When scrolling down the page add the navbar at the top		
+			function navBar (){									
 				if ($(window).scrollTop() > 0) {
 					$('nav').addClass('navbar-fixed-top');						
 				} else{
@@ -244,23 +261,11 @@
 				//Custom experiences based on the users device				
 				if(mobileUser){				
 					$('header').append("Welcome to Chad Smith's Github. <br /> Swipe down to continue.");
-					window.addEventListener('touchmove',function(e){
-										
-					//When scrolling down the page add the navbar at the top					
-					navBar();					
-					scrollDiv('<p>Swipe up to continue.</p>');		
-					});
+					window.addEventListener('touchmove',slowScroll);
 				}
 				else{
 					$('header').append("Welcome to Chad Smith's Github. <br /> Scroll up to continue.");
-					window.addEventListener('mousewheel', function(e){
-						if($(this).scrollTop() === 0 && e.wheelDelta>=0) {
-							scrollDiv('<p>Scroll down to continue. <br />Check out this page on your phone!</p>');
-						}
-						
-						//When scrolling down the page add the navbar at the top						
-						navBar();	
-					});
+					window.addEventListener('mousewheel', slowScroll);
 				}
 				
 				//Set height of each parallax to the screens height -50 pixels
