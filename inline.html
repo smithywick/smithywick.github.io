@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<script>
+
+	</script>
+
+	<style>
+	
+	@media only screen and (max-width: 800px) {
+	
+		.grid-box{
+			width: 100% !important;	
+		}	
+		
+		.grid-nav{
+			display: inline;
+		}		
+
+		.nav-item{
+			height: 5%;
+			padding-bottom: 1% !important;
+			padding-top: 1% !important;
+			margin-right: 0%;
+		}		
+	}
+	
+	@media only screen and (max-width: 480px){
+		.all{
+			width: 100% !important;	
+			display: inline;
+		}
+			
+	}
+	
+	.grid-container{
+		width: 100%;
+	}
+	
+	h1{
+		text-align: center;
+	}
+	
+	.grid-nav{
+		float: left;
+		width: 10%;
+	}
+	
+	.nav-item{
+		height: 15%;
+		padding-bottom: 10%;
+		padding-top: 10%;
+		margin-right: 2%;
+		border-bottom: 1px solid #e9e9e9;
+	}
+	
+	.grid-body{
+		float:left;
+		width:87%;
+	}
+	
+	.all{
+		width: 33.3333333333333333333333333333%;
+		min-height: 200px;
+		height: 75%;
+		float: left;
+		text-align: center;
+	}
+	
+	.one{
+		color: blue;
+		background-color: black;			
+	}
+	
+	.two{
+		color: red;
+		background-color: green;
+	}
+	
+	.three{
+		color: black;
+		background-color: red;
+	}
+
+	</style>
+
+	</head>
+
+	<body>
+	
+	<div class="grid-container">
+		<div class="grid-wrapper">
+			<div class="grid-header grid-box">
+				<h1>This is the website</h1>
+			</div>		
+			<div class="grid-nav grid-box">	
+				<div class="nav-item">Item1</div>
+				<div class="nav-item">Item1</div>
+				<div class="nav-item">Item1</div>
+				<div class="nav-item">Item1</div>			
+			</div>			
+			<div class="grid-body grid-box">
+					<div class="one all">One</div>
+					<div class="two all">Two</div>
+					<div class="three all">Three</div>
+			</div>
+		</div>
+	</div>
+	
+	</body>
+
+
+</html>
