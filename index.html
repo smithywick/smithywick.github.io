@@ -48,6 +48,11 @@
 		
 		.navbar-collapse{
 			overflow-x: hidden !important;
+			padding-left: 15px;
+		}
+		
+		.navbar-right{
+			padding-right: 15px;
 		}
 		
 		.parallax{
@@ -304,12 +309,12 @@
 					<span class="icon-bar"></span>
 				</button>
 			</div>
-			<div id="navbarCollapse" class="collapse navbar-collapse">
+			<div id="navbarCollapse" class="collapse navbar-collapse nav-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#about">About</a></li>
-					<li><a href="#projects">Projects</a></li>
-					<li><a href="#contact">Contact</a></li>
+					<li class="active"><a href="#" data-toggle="collapse" data-target=".nav-collapse.in">Home</a></li>
+					<li><a href="#about" data-toggle="collapse" data-target=".nav-collapse.in">About</a></li>
+					<li><a href="#projects" data-toggle="collapse" data-target=".nav-collapse.in">Projects</a></li>
+					<li><a href="#contact" data-toggle="collapse" data-target=".nav-collapse.in">Contact</a></li>
 				</ul>
 			</div>
 		</nav>
