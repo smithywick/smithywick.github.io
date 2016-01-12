@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>jQuery Demo</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script>
+			var clickHeight = 0;
+			var ticTac = '';	
+			var xoxo = 'O';
+						
+			$(document).ready(function() {
+				$("#clickTD").click(function() {
+				
+					//Check to see if un-animated
+					if (!$(this).is(':animated')) {
+						clickHeight = $(this).height();
+						$(this).html("");
+						if(clickHeight<=140){
+							clickHeight+=20;
+							$(this).animate({height:clickHeight});
+							$(this).append("Getting Bigger!");					
+						}
+						else{
+							clickHeight-=100;
+							$(this).animate({height:clickHeight});
+							$(this).append("Getting Smaller!")
+						};	
+					};
+				});
+				
+				$("table#ticTacToe tr td").click(function() {
+					if($(this).html() === ''){
+					xoxo = "" + (xoxo == "O" ? "X" : "O");
+						$(this).html(xoxo);
+					}
+				});
+			});
+
+		</script>
+        <style>
+        .table-top{
+			border-top: 2px solid black;
+			border-bottom: 2px solid black;
+		}
+		
+		.click-td{
+			width: 100px;
+			height: 100px;
+			border: 2px solid;
+			color: black;
+			background: white;
+			text-align: center;
+			float: left;
+		}
+		.click-td:hover{
+			color: white;
+			background: black;	
+			text-align: center;			
+		}
+		.tic-tac-toe tr td{
+			border: 1px solid black;
+			width: 50px;
+			height: 50px;
+			text-align: center;	
+		}
+		
+		
+		
+        </style>
+    </head>
+    <body> 
+		<!--<table>
+			<tr>
+				<td>
+					<table class='table-top'>
+						<thead>
+							<tr>
+								<td>
+									Header1  
+								</td>
+								<td>
+									Header2
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									Body1
+								</td>
+								<td>
+									Body1
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+				<td>				
+					<form action="http://google.com">
+						<input type="submit" value="Go to Google">
+					</form>
+				</td>				
+			</tr>
+		</table>
+		<div id="clickTD" class="click-td">
+			Click here
+		</div>-->
+		<table class="tic-tac-toe" id="ticTacToe">
+			<tr>
+				<td></td>	
+			    <td></td>	
+				<td></td>	
+			</tr>
+			<tr>
+				<td></td>	
+			    <td></td>	
+				<td></td>	
+			</tr>
+			<tr>
+				<td></td>	
+			    <td></td>	
+				<td></td>	
+			</tr>
+		</table>
+    </body>
+</html>

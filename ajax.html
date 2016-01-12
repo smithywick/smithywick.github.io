@@ -1,0 +1,69 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script>
+
+//If it's the initial load, change text for button, if not erase data in div before appending more data
+var initialLoad = true;
+
+function loadBars(){
+	
+	//Reset the html in the product name and package name divs
+	if(initialLoad){
+		$("#loadBarsButton").prop("value", "Click to refresh data");
+		initialLoad = false;
+	}
+	else{		
+		$("#barone").html("");
+		$("#bartwo").html("");
+	}
+	
+	//Load the product name
+	$.ajax({
+		type: "GET",
+		url: "./foo/barone",
+		data: "productID=123",
+		datatype: "json",
+		encode: true,
+		success: function(data){
+			$("#barone").append(data.productName);
+		},
+		error: function(xhr, status){
+			$("#barone").append("There was an error loading this Product Name.");
+		}
+	});
+
+	//Load the package name
+	$.ajax({
+		type: "GET",
+		url: "./foo/bartwo",
+		data: "packageID=456",
+		datatype: "json",
+		encode: true,
+		success: function(data){
+			$("#bartwo").append(data.packageName);
+		},
+		error: function(xhr, status){
+			$("#bartwo").append("There was an error loading this Package Name.");
+		}
+	});	
+}	
+
+</script>
+
+</head>
+
+<body>
+<input id="loadBarsButton" type="button" value="Click to load data" onclick="loadBars();" />
+
+<div id="barone"> 
+		
+</div>
+<div id="bartwo"> 
+		
+</div>
+
+</body>
+
+</html>
