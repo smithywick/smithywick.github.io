@@ -1,7 +1,8 @@
 (function () {
 
-	var Rectangle = Backbone.Model.extend({});
-
+	var Rectangle = Backbone.Model.extend({
+		defaults: {dragging:false}		
+	});
 	var RectangleView = Backbone.View.extend({
 
 		tagName: 'div',
@@ -9,7 +10,9 @@
 		className: 'rectangle',
 
 		events: {
-			'click': 'move'
+			'mousedown': 'draggingShape',
+			'mousemove': 'mousemove',
+			'mouseup': 'mouseup'
 		},
 
 		render: function () {
@@ -38,8 +41,35 @@
 			this.$el.css('background-color', this.model.get('color'));
 		},
 
-		move: function () {
-			this.$el.css('left', this.$el.position().left + 10);
+		draggingShape: function (e) {
+			//console.log("in dragging shape");
+			//console.log('x:' + e.clientX + ' y:' + e.clientY);
+			this.model.set({dragging: true});
+			//this.initialX = e.clientX;
+			//this.initialY = e.clientY;
+			return false; // prevents text selection
+		},
+		mouseup: function (e) {
+			//console.log('in mouseup');
+			//console.log('x:' + e.clientX + ' y:' + e.clientY);
+			if (!e) return;
+			var self = e.data;
+			this.model.set({dragging: false});
+		},
+		mousemove: function(e) {
+			
+			//console.log(e);
+			if (!e) return;
+			var self = e.data;
+			//console.log(this.model.get('dragging'));
+			if (this.model.get('dragging')){
+				console.log('x:' + e.clientX + ' y:' + e.clientY);
+			//console.log('in mousemove');
+				this.$el.css('left', e.pageX-this.$el.parent().offset().left);
+				console.log("pagex: " + e.pageX + " offsetleft: "+ this.$el.parent().offset().left);
+				this.$el.css('top', e.pageY-this.$el.parent().offset().top);
+				console.log("pagey: " + e.pageY + " offsettop: "+ this.$el.parent().offset().top);
+			} 
 		}
 
 	});
