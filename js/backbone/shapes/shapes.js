@@ -51,8 +51,6 @@
 		mousemove: function(e) {
 			
 			if (!e) return;
-			console.log(this.$el[0].offsetTop);
-			console.log(this.$el[0].offsetLeft);
 			if (this.model.get('dragging')){
 				this.$el.css({
 					'left': e.pageX-this.$el.outerWidth() / 2,
