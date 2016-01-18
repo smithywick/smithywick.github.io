@@ -4,7 +4,6 @@
 		defaults: {dragging:false}		
 	});
 	var RectangleView = Backbone.View.extend({
-
 		tagName: 'div',
 
 		className: 'rectangle',
@@ -42,36 +41,25 @@
 		},
 
 		draggingShape: function (e) {
-			//console.log("in dragging shape");
-			//console.log('x:' + e.clientX + ' y:' + e.clientY);
 			this.model.set({dragging: true});
-			//this.initialX = e.clientX;
-			//this.initialY = e.clientY;
 			return false; // prevents text selection
 		},
 		mouseup: function (e) {
-			//console.log('in mouseup');
-			//console.log('x:' + e.clientX + ' y:' + e.clientY);
 			if (!e) return;
-			var self = e.data;
 			this.model.set({dragging: false});
 		},
 		mousemove: function(e) {
 			
-			//console.log(e);
 			if (!e) return;
-			var self = e.data;
-			//console.log(this.model.get('dragging'));
+			console.log(this.$el[0].offsetTop);
+			console.log(this.$el[0].offsetLeft);
 			if (this.model.get('dragging')){
-				console.log('x:' + e.clientX + ' y:' + e.clientY);
-			//console.log('in mousemove');
-				this.$el.css('left', e.pageX-this.$el.parent().offset().left);
-				console.log("pagex: " + e.pageX + " offsetleft: "+ this.$el.parent().offset().left);
-				this.$el.css('top', e.pageY-this.$el.parent().offset().top);
-				console.log("pagey: " + e.pageY + " offsettop: "+ this.$el.parent().offset().top);
-			} 
+				this.$el.css({
+					'left': e.pageX-this.$el.outerWidth() / 2,
+					'top': e.pageY-this.$el.outerHeight() / 2
+				}) 
+			}	
 		}
-
 	});
 
 	var models = [
