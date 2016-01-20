@@ -11,7 +11,10 @@
 		events: {
 			'mousedown': 'draggingShape',
 			'mousemove': 'mousemove',
-			'mouseup': 'mouseup'
+			'mouseup': 'mouseup',
+			'touchdown': 'draggingShape',
+			'touchmove': 'mousemove',
+			'touchup': 'mouseup'
 		},
 
 		render: function () {

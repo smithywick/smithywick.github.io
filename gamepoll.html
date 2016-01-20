@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Backbone.js Web App</title>
+        <link rel="stylesheet" href="css/screen.css" />
+		<script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+    </head>
+    <body>
+        <div id="contacts"></div>
+        <script id="contactTemplate" type="text/template">
+            <img src="<%= photo %>" alt="<%= contacts.game %>" />
+            <h1><%= contacts.game %><span><%= contacts.plays %></span></h1>
+        </script>
+		<script>
+			console.log(contacts);
+		</script>
+        <script src="js/jquery-1.7.1.min.js"></script>
+        <script src="js/json2.js"></script>
+        <script src="js/underscore-min.js"></script>
+        <script src="js/backbone-min.js"></script>
+        <script src="js/app.js"></script>	
+    </body>
+</html>
