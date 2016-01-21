@@ -71,7 +71,7 @@
 					ctx.fillStyle = "black";
 				}
 				ctx.fillRect(xSqr,ySqr,dim,dim);
-				//console.log("xCord mod: " + xCord%dim + " yCord mod: " + yCord%dim);
+				console.log("xCord mod: " + xCord%dim + " yCord mod: " + yCord%dim);
 				//console.log("xFloor: " + xSqr + " yFloor: " + ySqr);
 				
 		}
@@ -97,11 +97,23 @@
 				i++;		
 			}
 		}
-				
+		
+		function loadCanvas(dim) {
+			var canvas = document.createElement('canvas');
+			var div = document.getElementById('paint-canvas'); 
+			canvas.id     = "canvasElement";
+			canvas.width  = dim;
+			canvas.height = dim;
+			canvas.style.border   = "1px solid #c3c3c3";			
+			$('#paint-canvas').empty();
+			div.appendChild(canvas);
+			canvas.addEventListener('onmousemove', getPosition(event));
+		}
+		
 		function paintGrid(){
 			dim = document.getElementById('dim').value;
 			var qty = document.getElementById('qty').value;
-			//console.log(dim + " " + qty);
+			loadCanvas(dim*qty);
 			gridArr = twoDArr(qty);	
 			paintCanvas(dim, qty);
 			
@@ -124,16 +136,8 @@
 				<input type="text" id="qty" value="15">
 				<input type="button" value="Paint it!" onclick="paintGrid()">
 			</div>
-			<div class="paint-canvas">
-				<canvas 
-					id="canvasElement" 
-					width="500" 
-					height="500"
-					style="border:1px solid #c3c3c3;"
-					onmousemove="getPosition(event);"
-				>
-				Your browser does not support the canvas element.
-				</canvas>
+			<div class="paint-canvas" id="paint-canvas">
+				<p>Select criteria above to paint your canvas!</p>
 			</div>
 		</div>
 	</body>
