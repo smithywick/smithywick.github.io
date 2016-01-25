@@ -2,20 +2,46 @@
 
 <html lang="en">
     <head>
-        <meta charset="UTF-8" />
-        <title>Backbone.js Web App</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone.js"></script>    	
-	<script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
-	<script src="https://cdn.firebase.com/libs/backbonefire/0.5.1/backbonefire.min.js"></script>
+		<meta charset="UTF-8" />
+		<title>Backbone.js Web App</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone.js"></script>    	
+		<script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+		<script src="https://cdn.firebase.com/libs/backbonefire/0.5.1/backbonefire.min.js"></script>
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+		<style>
+			.container{
+				float: left;
+				width: 400px;	
+				border: 1px solid black;
+				padding-bottom: 40px;
+			}
+			.player-container{
+				width: 95%;
+				padding: 5px;
+				margin: 5px;
+				border: 1px solid black;
+			}
+		</style>
+		<script>
+		  $(function() {
+			$( "#players" ).sortable();
+			$( "#players" ).disableSelection();
+		  });
+		 </script>
     </head>
     <body>
-        <div id="players"></div>
+		<div class="container">
+			<div id="players" class="ui-state-default sortable"></div>
+		</div>
         <script id="playerTemplate" type="text/template">
             <img src="" alt="<%= game %>" />
             <h1><%= game %><span><%= plays %></span></h1>
         </script>
 	<script src="/js/backbone/gamepoll/app.js"></script>
+	
+	
     </body>
 </html>
