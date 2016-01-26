@@ -1,61 +1,52 @@
-﻿(function ($) {
+﻿//Model for default player
+var Player = Backbone.Model.extend({
+	defaults: {
+		photo: "img/placeholder.png"
+	}
+});
 
-	var fbPlayers = new Firebase("https://smithywick.firebaseio.com/");
-	fbPlayers.child("folder/games").on("value", function(snapshot) {
-			
-		var fbData = snapshot.val();
-		
-		//Model for default player
-		var Player = Backbone.Model.extend({
-			defaults: {
-				photo: "img/placeholder.png"
-			}
+//Define individual player view
+var PlayerView = Backbone.View.extend({
+	tagName: "article",
+	className: "player-container",
+	template: $("#playerTemplate").html(),
+
+	render: function () {
+		var tmpl = _.template(this.template);
+		$(this.el).html(tmpl(this.model));
+		return this;
+	}
+});
+
+//Overall view
+var DirectoryView = Backbone.View.extend({
+	el: $("#players"),
+	
+	initialize: function () {
+		var fbData = Backbone.Firebase.Collection.extend({
+			model: Player,
+			url: "https://smithywick.firebaseio.com/folder/games"
 		});
-		
-		//Define directory collection
-		var Directory = Backbone.Collection.extend({
-			model: Player
-		});
-
-		//Define individual player view
-		var PlayerView = Backbone.View.extend({
-			tagName: "article",
-			className: "player-container",
-			template: $("#playerTemplate").html(),
-
-			render: function () {
-				var tmpl = _.template(this.template);
-				$(this.el).html(tmpl(this.model.toJSON()));
-				return this;
-			}
-		});
-
-		//Overall view
-		var DirectoryView = Backbone.View.extend({
-			el: $("#players"),
-			
-			initialize: function () {
-				this.collection = new Directory(fbData);
-				this.render();
-			},
-
-			render: function () {
-				var self = this;
-				_(this.collection.models).each(function (item) {
-					self.renderPlayer(item);
-				}, this);
-			},
-
-			renderPlayer: function (item) {
+		var firebaseData = new fbData;
+		var self = this;
+		firebaseData.on('sync', function(collection) {
+			var col = collection.toJSON();
+			_(col).each(function (item) {
 				var playerView = new PlayerView({
 					model: item
 				});
-				this.$el.append(playerView.render().el);
-			}
+				self.$el.append(playerView.render().el);
+			}, self);	
 		});
-		
-		//Instance of the overall view
-		var directory = new DirectoryView();
-	});
+	}
+});
+
+//Instance of the overall view
+function init() {
+	var directory = new DirectoryView();
+}
+
+$(function() {
+  init();
+});
 	
-} (jQuery));
