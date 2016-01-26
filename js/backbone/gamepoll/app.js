@@ -5,6 +5,12 @@ var Player = Backbone.Model.extend({
 	}
 });
 
+//Firebase database
+var fbData = Backbone.Firebase.Collection.extend({
+	model: Player,
+	url: "https://smithywick.firebaseio.com/folder/games"
+});
+
 //Define individual player view
 var PlayerView = Backbone.View.extend({
 	tagName: "article",
@@ -22,11 +28,7 @@ var PlayerView = Backbone.View.extend({
 var DirectoryView = Backbone.View.extend({
 	el: $("#players"),
 	
-	initialize: function () {
-		var fbData = Backbone.Firebase.Collection.extend({
-			model: Player,
-			url: "https://smithywick.firebaseio.com/folder/games"
-		});
+	initialize: function () {		
 		var firebaseData = new fbData;
 		var self = this;
 		firebaseData.on('sync', function(collection) {
