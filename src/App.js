@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ListItem from './listitem';
+//import ListItem from './listitem';
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
@@ -48,13 +48,14 @@ class App extends Component {
         <div className="list">
           <div className="button" onclick={this.updateData}>button </div>
           <div className="list">
-            {
+            app
+            {/*
               this.state.data
               &&
               this.state.data.map(
                 (item) =>
                   <ListItem key={item.id} className="listItem " data={item} />
-              )
+              )*/
             }
           </div>
         </div>
