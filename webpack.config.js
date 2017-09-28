@@ -10,7 +10,7 @@ var config = {
   output: {
     path: path.join(__dirname, 'public', 'js'),
     filename: 'bundle.js',
-    publicPath: '/js'
+    publicPath: './public/js'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
